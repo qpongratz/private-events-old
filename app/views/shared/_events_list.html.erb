@@ -1,7 +1,8 @@
 <% events.each do |event| %>
   <div class="event"></div>
-    <div class="event-name"><%= event.name%></div>
-    <div class="date"><%= event.date %></div>
-    <div class="place"><%= event.place %></div>
+    <div class="event-name"><%= link_to event.name, event %></div>
+    <div class="place">Where: <%= event.place %></div>
+    <div class="date">When: <%= event.date %></div>
+    <div class="creator">Event created by: <%= link_to event.creator.email, event.creator %></div>
   </div>
 <% end %>
