@@ -4,12 +4,15 @@
     <div class="place">Where: <%= event.place %></div>
     <div class="date">When: <%= event.date %></div>
     <div class="creator">Event created by: <%= link_to event.creator.email, event.creator %></div>
-    <div class="attendees">Attendees:</div>
+    <div class="attendees">Attendees:
       <ul>
         <% event.attendees.each do |attendee| %>
           <li><%= attendee.email %></li>
         <% end %>
       </ul>
-    <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %></div>
+    </div>
+    <% if user_signed_in? %>
+      <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %></div>
+    <% end %>
   </div>
 <% end %>
