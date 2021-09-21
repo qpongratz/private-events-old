@@ -1,8 +1,2 @@
 <%= link_to 'Create new post', new_event_path %>
-<% @events.each do |event| %>
-  <div class="event"></div>
-    <div class="event-name"><%= event.name%></div>
-    <div class="date"><%= event.date %></div>
-    <div class="place"><%= event.place %></div>
-  </div>
-<% end %>
+<%= render partial: 'shared/events_list', locals: { events: @events } %>
