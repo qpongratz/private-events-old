@@ -1,1 +1,7 @@
-Hello
+<% @events.each do |event| %>
+  <div class="event">
+    <div class="event-name"><%= event.name%></div>
+    <div class="date"><%= event.date %></div>
+    <div class="place"><%= event.place %></div>
+  </div>
+<% end %>
