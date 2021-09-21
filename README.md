@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Private Events project done with [The Odin Project](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/private-events)
 
-Things you may want to cover:
+## OBJECTIVES
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Put in to practice more advanced Active Record Queries and Associations
+* Get my hands dirty with many to many associations
+* Find out if the stuff I have written down on my paper is actually sound model architecture for this project
+* Get more comfortable with Rails in general
