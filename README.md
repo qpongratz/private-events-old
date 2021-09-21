@@ -2,7 +2,7 @@
 
 Private Events project done with [The Odin Project](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/private-events)
 
-## OBJECTIVES
+## Objectives
 
 * Put in to practice more advanced Active Record Queries and Associations
 * Get my hands dirty with many to many associations
