@@ -1,4 +1,4 @@
-<% events.each do |event| %>
+<% events.includes(:attendees, :creator).each do |event| %>
   <div class="event">
     <div class="event-name"><%= link_to event.name, event %></div>
     <div class="place">Where: <%= event.place %></div>
