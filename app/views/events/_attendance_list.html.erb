@@ -1,13 +1,11 @@
 <h2 class="attendance">Who's going?</h2>
 <div class="attendees">
-  <% if events.nil? %>
+  <% if event.first.attendees.empty? %>
     <h3>No one... yet.</h3>
   <% else %>
     <ul>
-      <% events.includes(:attendees).each do |event| %>
-        <% event.attendees.each do |attendee| %>
-          <li><%= attendee.email %></li>
-        <% end %>
+      <% event.first.attendees.each do |attendee| %>
+        <li><%= attendee.email %></li>
       <% end %>
     </ul>
   <% end %>
