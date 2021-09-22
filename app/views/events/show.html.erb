@@ -1,2 +1,7 @@
-<%= render partial: 'shared/events_list', locals: { events: @event.includes(:creator) } %>
-<%= render partial: 'attendance_list', locals: { event: @event.includes(:attendees) } %>
+<%= render  @event %>
+<div class="attendance">
+  <h2 class="attendance">Who's going?</h2>
+  <ul>
+    <%= render partial: 'attendee', collection: @event.attendees %>
+  </ul>
+</div>

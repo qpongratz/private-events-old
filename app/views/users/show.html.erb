@@ -1,4 +1,4 @@
 <h2>Created Events:</h2>
-<%= render partial: 'shared/events_list', locals: { events: @user.created_events.all } %>
+<%= render partial: 'events/event', collection: @user.created_events %>
 <h2>Attended Events:</h2>
-<%= render partial: 'shared/events_list', locals: { events: @user.attended_events.all.includes(:creator) } %>
+<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator) %>
