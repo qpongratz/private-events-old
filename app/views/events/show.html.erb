@@ -1,1 +1,2 @@
 <%= render partial: 'shared/events_list', locals: { events: @event } %>
+<%= render partial: 'attendance_list', locals: { events: @event.includes(:attendees) } %>
