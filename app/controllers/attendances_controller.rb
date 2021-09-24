@@ -5,7 +5,9 @@ class AttendancesController < ApplicationController
 
     if attendance.save
       redirect_to attendance.attended_event
+      flash[:notice] = 'You are now attending the event'
     else
+      flash[:alert] = 'Uh oh'
       redirect_back(fallback_location: root_path)
     end
   end
