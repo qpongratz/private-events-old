@@ -14,6 +14,13 @@ class AttendancesController < ApplicationController
     end
   end
 
+  def destroy
+    attendance = Attendance.find_by attendee_id: attendance_params[:attendee_id], attended_event_id: attendance_params[:attended_event_id]
+    attendance.delete
+    flash[:notice] = 'You are no longer attending this event'
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def attendance_params

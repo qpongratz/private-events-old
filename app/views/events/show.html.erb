@@ -1,7 +1,7 @@
 <%= render  @event %>
 <% if user_signed_in? %>
   <% if current_user.in?(@event.attendees) %>
-    <div class="attend-event"><%= button_to 'Already Attending', @event, method: :get %></div>
+    <div class="attend-event"><%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
   <% else %>
     <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
   <% end %>
