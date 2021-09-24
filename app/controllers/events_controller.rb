@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect to @event
+      redirect_to @event
     else
       render :edit
     end
