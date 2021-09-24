@@ -1,4 +1,15 @@
 <%= render  @event %>
+<% if user_signed_in? %>
+  <% if current_user.in?(@event.attendees) %>
+    <div class="attend-event"><%= button_to 'Already Attending', @event, method: :get %></div>
+  <% else %>
+    <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %></div>
+  <% end %>
+  <% if current_user == @event.creator %>
+    <div class="edit"><%= link_to 'Edit Event', edit_event_path(@event) %></div>
+    <div class="delete"><%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></div>
+  <% end %>
+<% end %>
 <div class="attendance">
   <h2 class="attendance">Who's going?</h2>
   <ul>

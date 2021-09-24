@@ -1,17 +1,6 @@
 <div class="event">
-  <div class="event-name"><%= link_to event.name, event %></div>
+  <h2><%= link_to event.name, event %></h2>
   <div class="place">Where: <%= event.place %></div>
   <div class="date">When: <%= event.date %></div>
   <div class="creator">Event created by: <%= link_to event.creator.username, event.creator %></div>
-  <% if user_signed_in? %>
-    <% if current_user.in?(event.attendees) %>
-      <div class="attend-event"><%= button_to 'Already Attending', event, method: :get %></div>
-    <% else %>
-      <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %></div>
-    <% end %>
-    <% if current_user == event.creator %>
-      <div class="edit"><%= link_to 'Edit Event', edit_event_path(event) %></div>
-      <div class="delete"><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></div>
-    <% end %>
-  <% end %>
 </div>
