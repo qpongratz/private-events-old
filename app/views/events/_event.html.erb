@@ -5,5 +5,6 @@
   <div class="creator">Event created by: <%= link_to event.creator.username, event.creator %></div>
   <% if user_signed_in? %>
     <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %></div>
+    <div class="edit"><%= link_to 'Edit Event', edit_event_path(event) %></div>
   <% end %>
 </div>
