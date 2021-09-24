@@ -3,7 +3,7 @@
 <% else %>
   <h1><%= @user.username.capitalize %>'s Events</h1>
 <% end %>
-<h2>Attending Events:</h2>
+<h2>Upcoming Events:</h2>
 <ul>
   <% if @user.attended_events.upcoming.size.zero? %>
     <li>None Yet</li>
