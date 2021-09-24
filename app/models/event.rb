@@ -11,4 +11,5 @@ class Event < ApplicationRecord
 
   scope :occurred, -> { where('date < ?', DateTime.now)}
   scope :upcoming, -> { where('date > ?', DateTime.now)}
+  default_scope { order(date: :desc) }
 end
