@@ -13,8 +13,10 @@ class EventsController < ApplicationController
     @event = current_user.created_events.build(event_params)
 
     if @event.save
+      flash[:notice] = 'Event created successfully'
       redirect_to @event
     else
+      flash.now[:alert] = 'There were errors in your submission'
       render :new
     end
   end
@@ -27,8 +29,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
+      flash[:notice] = 'Event updated successfully'
       redirect_to @event
     else
+      flash.now[:alert] = 'There were errors in your submission'
       render :edit
     end
   end
@@ -40,6 +44,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.delete
+    flash[:nitice] = 'Event was deleted'
     redirect_back(fallback_location: root_path)
   end
 
