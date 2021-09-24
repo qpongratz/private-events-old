@@ -1,4 +1,10 @@
-<h2>Created Events:</h2>
-<%= render partial: 'events/event', collection: @user.created_events %>
-<h2>Attended Events:</h2>
-<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator) %>
+<h1>Upcoming Events:</h1>
+<h2>Created:</h2>
+<%= render partial: 'events/event', collection: @user.created_events.upcoming %>
+<h2>Attending:</h2>
+<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator).upcoming %>
+<h1>Previous Events:</h1>
+<h2>Created:</h2>
+<%= render partial: 'events/event', collection: @user.created_events.occurred %>
+<h2>Attended:</h2>
+<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator).occurred %>
