@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+# frozen_string_literal: true
+
 ActiveRecord::Schema.define(version: 2021_09_24_193947) do
 
   create_table "attendances", force: :cascade do |t|
