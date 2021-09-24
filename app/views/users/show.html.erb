@@ -1,10 +1,19 @@
-<h1>Upcoming Events:</h1>
-<h2>Created:</h2>
-<%= render partial: 'events/event', collection: @user.created_events.upcoming %>
-<h2>Attending:</h2>
-<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator).upcoming %>
-<h1>Previous Events:</h1>
-<h2>Created:</h2>
-<%= render partial: 'events/event', collection: @user.created_events.occurred %>
-<h2>Attended:</h2>
-<%= render partial: 'events/event', collection: @user.attended_events.includes(:creator).occurred %>
+<h1><%= @user.username %>'s Events</h1>
+<h2>Attending Events:</h2>
+<ul>
+  <%= @user.attended_events.upcoming.find_each do |event| %>
+    <li><%= link_to event.name, event %> - <%= event.date %></li>
+  <% end %>
+</ul>
+<h2>Attended Events:</h2>
+<ul>
+  <%= @user.attended_events.occurred.find_each do |event| %>
+    <li><%= link_to event.name, event %> - <%= event.date %></li>
+  <% end %>
+</ul>
+<h2>Created Events:</h2>
+<ul>
+  <%= @user.created_events.find_each do |event| %>
+    <li><%= link_to event.name, event %> - <%= event.date %></li>
+  <% end %>
+</ul>
