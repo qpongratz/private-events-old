@@ -6,7 +6,7 @@
 <% end %>
 <h2>Upcoming Events:</h2>
 <ul>
-  <% if @user.attended_events.upcoming.count.zero? %>
+  <% if @user.attended_events.upcoming.empty?%>
     <li>None Yet</li>
   <% else %>
     <%= @user.attended_events.upcoming.find_each do |event| %>
@@ -21,7 +21,7 @@
 </ul>
 <h2>Attended Events:</h2>
 <ul>
-  <% if @user.attended_events.occurred.count.zero? %>
+  <% if @user.attended_events.occurred.empty? %>
     <li>None Yet</li>
   <% else %>
     <%= @user.attended_events.occurred.find_each do |event| %>
@@ -31,7 +31,7 @@
 </ul>
 <h2>Created Events:</h2>
 <ul>
-    <% if @user.created_events.count.zero? %>
+    <% if @user.created_events.empty? %>
     <li>None Yet</li>
   <% else %>
     <%= @user.created_events.find_each do |event| %>

@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
   resources :attendances, only: %i[create destroy]
   resources :invitations, only: %i[create destroy index]
+  post 'invitation/accept', to: 'invitations#accept'
 end

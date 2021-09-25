@@ -1,1 +1,9 @@
 <h1>Pending Invitations</h1>
+<ul>
+  <% current_user.private_events.each do |event| %>
+    <li>
+      <%= render event %>
+      <%= button_to 'Accept Invitation', 'invitation/accept', params: { invitation: { private_event_id: event.id, invitee_id: current_user.id } } %>
+    </li>
+  <% end %>
+</ul>

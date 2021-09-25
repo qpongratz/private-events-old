@@ -24,6 +24,14 @@ class InvitationsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def accept
+    invitation = Invitation.find_by invitee_id: invitation_params[:invitee_id], private_event_id: invitation_params[:private_event_id]
+    invitation.delete
+    attendance = { attended_event_id: invitation_params[:private_event_id], attendee_id: invitation_params[:invitee_id] }
+    Attendance.create(attendance)
+    redirect_to event_path(invitation_params[:private_event_id])
+  end
+
   private
 
   def invitation_params
