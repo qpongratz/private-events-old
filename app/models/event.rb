@@ -11,7 +11,8 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :place, presence: true
 
-  scope :occurred, -> { where('date < ?', DateTime.now)}
-  scope :upcoming, -> { where('date > ?', DateTime.now)}
+  scope :occurred, -> { where('date < ?', DateTime.now) }
+  scope :upcoming, -> { where('date > ?', DateTime.now) }
+  scope :common, -> { where('private = ?', false) }
   default_scope { order(date: :desc) }
 end

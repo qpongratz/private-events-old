@@ -13,8 +13,12 @@
   <%= f.label 'Name:' %>
   <%= f.text_field :name %> <br><br>
   <%= f.label 'Time:' %>
-  <%= f.datetime_select :date %> UTC <br><br>
+  <%= f.datetime_field :date %> UTC <br><br>
   <%= f.label 'Place:' %>
   <%= f.text_field :place %> <br><br>
+  <%= f.label 'Private:'%>
+  <%= f.radio_button :private, true %>
+  <%= f.label 'Public:'%>
+  <%= f.radio_button :private, false %> <br><br>
   <%= f.submit %>
 <% end %>
