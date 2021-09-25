@@ -1,0 +1,8 @@
+<h2>Invite People</h2>
+<% users.where.not(id: [event.invitees, event.creator]).find_each do |user| %>
+  <%= button_to "Invite #{user.username.capitalize}", root_path %> <br>
+<% end %>
+<h2>Invited People</h2>
+<% users.where(id: [event.invitees]).find_each do |user| %>
+  <%= button_to "Invite #{user.username.capitalize}", root_path %> <br>
+<% end %>
