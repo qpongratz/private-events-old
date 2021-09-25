@@ -1,8 +1,8 @@
-<h2>Invite People</h2>
-<% users.where.not(id: [event.invitees, event.creator]).find_each do |user| %>
-  <%= button_to "Invite #{user.username.capitalize}", root_path %> <br>
-<% end %>
-<h2>Invited People</h2>
-<% users.where(id: [event.invitees]).find_each do |user| %>
-  <%= button_to "Invite #{user.username.capitalize}", root_path %> <br>
+<h2>Manage Invitations</h2>
+<% users.where.not(id: [event.creator]).find_each do |user| %>
+  <% if event.in?(user.private_events) %>
+    <%= button_to "Uninvite #{user.username.capitalize}", invitation_path, method: :delete, params: { invitation: { private_event_id: event.id, invitee_id: user.id } } %> <br>
+  <% else %>
+    <%= button_to "Invite #{user.username.capitalize}", invitations_path, params: { invitation: { private_event_id: event.id, invitee_id: user.id } } %> <br>
+  <% end %>
 <% end %>

@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @users = User.all
+    @users = User.all.includes(:private_events)
     @event = Event.all.includes(:attendees, :creator).where(id: params[:id]).first
   end
 
