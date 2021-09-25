@@ -16,6 +16,8 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:notice] = 'Event created successfully'
+      attendance = { attendee_id: current_user.id, attended_event_id: @event.id }
+      Attendance.create(attendance)
       redirect_to @event
     else
       flash.now[:alert] = 'There were errors in your submission'
