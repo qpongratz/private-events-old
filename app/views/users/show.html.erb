@@ -1,5 +1,5 @@
 <% if @user == current_user %>
-  <% own_events = true %>
+  <% my_events = true %>
   <h1>My Events</h1>
 <% else %>
   <h1><%= @user.username.capitalize %>'s Events</h1>
@@ -12,7 +12,7 @@
     <%= @user.attended_events.upcoming.find_each do |event| %>
       <li>
       <%= link_to event.name, event %> - <%= event.date %>
-      <% if own_events %>
+      <% if my_events %>
         <%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %>
       <% end %>
       </li>
