@@ -1,21 +1,27 @@
 <% if @user == current_user %>
+  <% own_events = true %>
   <h1>My Events</h1>
 <% else %>
   <h1><%= @user.username.capitalize %>'s Events</h1>
 <% end %>
 <h2>Upcoming Events:</h2>
 <ul>
-  <% if @user.attended_events.upcoming.size.zero? %>
+  <% if @user.attended_events.upcoming.count.zero? %>
     <li>None Yet</li>
   <% else %>
     <%= @user.attended_events.upcoming.find_each do |event| %>
-      <li><%= link_to event.name, event %> - <%= event.date %></li>
+      <li>
+      <%= link_to event.name, event %> - <%= event.date %>
+      <% if own_events %>
+        <%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %>
+      <% end %>
+      </li>
     <% end %>
   <% end %>
 </ul>
 <h2>Attended Events:</h2>
 <ul>
-  <% if @user.attended_events.occurred.size.zero? %>
+  <% if @user.attended_events.occurred.count.zero? %>
     <li>None Yet</li>
   <% else %>
     <%= @user.attended_events.occurred.find_each do |event| %>
@@ -25,7 +31,7 @@
 </ul>
 <h2>Created Events:</h2>
 <ul>
-    <% if @user.created_events.size.zero? %>
+    <% if @user.created_events.count.zero? %>
     <li>None Yet</li>
   <% else %>
     <%= @user.created_events.find_each do |event| %>
