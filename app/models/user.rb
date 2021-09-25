@@ -11,4 +11,6 @@ class User < ApplicationRecord
                             inverse_of: :creator
   has_many :attendances, foreign_key: 'attendee_id'
   has_many :attended_events, through: :attendances
+  has_many :invitations, foreign_key: 'invitee_id'
+  has_many :private_events, through: :invitations
 end

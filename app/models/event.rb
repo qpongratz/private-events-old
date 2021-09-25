@@ -5,6 +5,8 @@ class Event < ApplicationRecord
                        inverse_of: :created_events
   has_many :attendances, foreign_key: 'attended_event_id'
   has_many :attendees, through: :attendances
+  has_many :invitations, foreign_key: 'private_event_id'
+  has_many :invitees, through: :invitations
   validates :name, presence: true
   validates :date, presence: true
   validates :place, presence: true
