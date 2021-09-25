@@ -8,7 +8,7 @@
     </ul>
   </div>
 <% end %>
-
+<h1>Event Details</h1>
 <%= form_with model: @event do |f| %>
   <%= f.label 'Name:' %>
   <%= f.text_field :name %> <br><br>
@@ -16,9 +16,9 @@
   <%= f.datetime_field :date %> UTC <br><br>
   <%= f.label 'Place:' %>
   <%= f.text_field :place %> <br><br>
-  <%= f.label 'Private:'%>
   <%= f.radio_button :private, true %>
-  <%= f.label 'Public:'%>
-  <%= f.radio_button :private, false %> <br><br>
+  <%= f.label :private_true, 'Private'%>
+  <%= f.radio_button :private, false %>
+  <%= f.label :private_false, 'Public' %> <br><br>
   <%= f.submit %>
 <% end %>
