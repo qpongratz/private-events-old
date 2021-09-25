@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class InvitationsController < ApplicationController
+  def index
+    @invitations = Invitation.all.where(current_user == :invitee)
+  end
 
   def create
     invitation = Invitation.new(invitation_params)
