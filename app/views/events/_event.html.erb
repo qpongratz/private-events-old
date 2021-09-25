@@ -1,5 +1,6 @@
 <div class="event">
   <h2><%= link_to event.name, event %></h2>
+  <div class="private">Note: This event is private. Anyone not invited will not be able see event details.</div>
   <div class="place">Where: <%= event.place %></div>
   <div class="date">When: <%= event.date %></div>
   <div class="creator">Event created by: <%= link_to event.creator.username, event.creator %></div>

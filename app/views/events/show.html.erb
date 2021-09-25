@@ -1,22 +1,18 @@
-<%= render  @event %>
 <% if user_signed_in? %>
-  <% if current_user.in?(@event.attendees) %>
-    <div class="attend-event"><%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
+  <% if @event.private == false || current_user == @event.creator || current_user.in?(@event.attendees) %>
+    <%= render  @event %>
+    <% if current_user.in?(@event.attendees) %>
+      <div class="attend-event"><%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
+    <% else %>
+      <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
+    <% end %>
+    <% if current_user == @event.creator %>
+      <div class="edit"><%= link_to 'Edit Event', edit_event_path(@event) %></div>
+      <div class="delete"><%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></div>
+    <% end %>
+    <%= render partial: 'guest_list', locals: { event: @event } %>
   <% else %>
-    <div class="attend-event"><%= button_to 'Attend Event', attendances_path, params: { attendance: { attended_event_id: @event.id, attendee_id: current_user.id } } %></div>
-  <% end %>
-  <% if current_user == @event.creator %>
-    <div class="edit"><%= link_to 'Edit Event', edit_event_path(@event) %></div>
-    <div class="delete"><%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></div>
+      <p>This is a private event. Sign in or ask the host to invite you to see details.</p>
   <% end %>
 <% end %>
-<div class="attendance">
-  <h2 class="attendance">Who's going?</h2>
-  <ul>
-    <% if @event.attendees.empty? %>
-      <li>None Yet</li>
-    <% else %>
-      <%= render partial: 'attendee', collection: @event.attendees %>
-    <% end %>
-  </ul>
-</div>
+

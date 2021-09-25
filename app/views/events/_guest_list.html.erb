@@ -1,0 +1,10 @@
+<div class="attendance">
+  <h2 class="attendance">Who's going?</h2>
+  <ul>
+    <% if event.attendees.empty? %>
+      <li>None Yet</li>
+    <% else %>
+      <%= render partial: 'attendee', collection: event.attendees %>
+    <% end %>
+  </ul>
+</div>
