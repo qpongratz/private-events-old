@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @events = Event.all.includes(:creator)
+    @events = Event.common.all.includes(:creator)
   end
 
   def new
