@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.all.includes(:attendees, :creator).where(id: params[:id]).first
   end
 
   def destroy
