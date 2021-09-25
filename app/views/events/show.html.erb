@@ -12,7 +12,12 @@
     <% end %>
     <%= render partial: 'guest_list', locals: { event: @event } %>
   <% else %>
-      <p>This is a private event. Sign in or ask the host to invite you to see details.</p>
+    <p>This is a private event ask the host to invite you to see detailS.</p>
   <% end %>
+<% elsif @event.private == false %>
+  <%= render @event %>
+  <%= render partial: 'guest_list', locals: { event: @event } %>
+<% else %>
+  <p>This is a private event or does not exist.</p>
 <% end %>
 
