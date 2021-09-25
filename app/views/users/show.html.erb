@@ -12,7 +12,7 @@
     <%= @user.attended_events.upcoming.find_each do |event| %>
       <li>
       <%= link_to event.name, event %> <strong><%= ' - Private ' if event.private %></strong>- <%= event.date %>
-      <% if my_events %>
+      <% if my_events && @user != event.creator %>
         <%= button_to 'Unattend Event', attendance_path, method: :delete, params: { attendance: { attended_event_id: event.id, attendee_id: current_user.id } } %>
       <% end %>
       </li>
