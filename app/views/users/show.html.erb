@@ -1,6 +1,7 @@
 <% if @user == current_user %>
   <% my_events = true %>
   <h1>My Events</h1>
+  <%= link_to 'Pending Invitations', invitations_path unless current_user.private_events.empty? %>
 <% else %>
   <h1><%= @user.username.capitalize %>'s Events</h1>
 <% end %>
