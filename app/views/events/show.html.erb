@@ -9,7 +9,9 @@
     <% if current_user == @event.creator %>
       <div class="edit"><%= link_to 'Edit Event', edit_event_path(@event) %></div>
       <div class="delete"><%= link_to 'Delete Event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></div>
-      <%= render partial: 'invitations', locals: { users: @users, event: @event } %>
+      <% if @event.private == true %>% 
+        <%= render partial: 'invitations', locals: { users: @users, event: @event } %>
+      <% end %>
     <% end %>
     <%= render partial: 'guest_list', locals: { event: @event } %>
   <% else %>
@@ -19,6 +21,6 @@
   <%= render @event %>
   <%= render partial: 'guest_list', locals: { event: @event } %>
 <% else %>
-  <p>This is a private event or does not exist.</p>
+  <p>This is a private event.</p>
 <% end %>
 

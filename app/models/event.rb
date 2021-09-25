@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :date, presence: true
   validates :place, presence: true
-  validates :private, presence: true
+  validates_inclusion_of :private, :in => [true, false]
 
   scope :occurred, -> { where('date < ?', DateTime.now) }
   scope :upcoming, -> { where('date > ?', DateTime.now) }
