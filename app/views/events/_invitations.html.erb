@@ -1,5 +1,5 @@
 <h2>Manage Invitations</h2>
-<% users.where.not(id: [event.creator]).find_each do |user| %>
+<% users.where.not(id: [event.attendees]).find_each do |user| %>
   <% if event.in?(user.private_events) %>
     <%= button_to "Uninvite #{user.username.capitalize}", invitation_path, method: :delete, params: { invitation: { private_event_id: event.id, invitee_id: user.id } } %> <br>
   <% else %>
