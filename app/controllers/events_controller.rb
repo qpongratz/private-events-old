@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.delete
-    flash[:nitice] = 'Event was deleted'
+    flash[:notice] = 'Event was deleted'
     redirect_back(fallback_location: root_path)
   end
 
